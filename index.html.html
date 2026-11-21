@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Akshat Sharma – CS student & creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#e7e8ea; --surface:#f5f5f6; --ink:#12142b; --muted:#555a73; --line:#12142b;
+  --pop:#ffb800; --pop-ink:#12142b; --hot:#e8366b;
+  --display:'Anton','Impact','Arial Narrow',sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f1129;--surface:#191c3d;--ink:#eef0f7;--muted:#a3a8c7;--line:#eef0f7;--pop:#ffb800;--pop-ink:#12142b;--hot:#ff5c8a}
+}
+:root[data-theme="dark"]{--bg:#0f1129;--surface:#191c3d;--ink:#eef0f7;--muted:#a3a8c7;--line:#eef0f7;--pop:#ffb800;--pop-ink:#12142b;--hot:#ff5c8a}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:5rem 0}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;letter-spacing:.01em;margin:0}
+h2{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:2rem}
+p{max-width:62ch}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:400 1.6rem var(--display);text-decoration:none;letter-spacing:.03em}
+.links{display:flex;gap:1.6rem;align-items:center}
+.links a{text-decoration:none;font-weight:500}
+.links a:hover{text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:3px;text-underline-offset:6px}
+.icon-btn{background:none;border:2px solid var(--line);color:var(--ink);border-radius:999px;width:42px;height:42px;font-size:1.1rem;cursor:pointer}
+.icon-btn:hover{background:var(--pop);color:var(--pop-ink)}
+#menu{display:none}
+@media (max-width:700px){
+  #menu{display:inline-block}
+  .links{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);flex-direction:column;align-items:flex-start;padding:1.2rem 1.25rem 1.6rem;border-bottom:2px solid var(--line);gap:1rem}
+  .links.open{display:flex}
+}
+
+/* hero */
+.hero{padding:4rem 0 5rem}
+.hero h1{font-size:clamp(4.2rem,17vw,12rem);text-transform:uppercase}
+.hero h1 span{display:block}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.tag{display:inline-block;background:var(--pop);color:var(--pop-ink);font-weight:700;padding:.35rem .9rem;border:2px solid var(--line);transform:rotate(-2deg);margin-bottom:1.4rem}
+.role{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:500;margin:1.6rem 0 .6rem;min-height:2.2em}
+.role b{border-right:3px solid var(--hot);padding-right:4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{border-color:transparent}}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border:2px solid var(--line);font-weight:700;text-decoration:none;background:var(--surface);box-shadow:4px 4px 0 var(--line);transition:transform .12s,box-shadow .12s}
+.btn.primary{background:var(--pop);color:var(--pop-ink)}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start}
+.facts{background:var(--surface);border:2px solid var(--line);padding:1.4rem 1.6rem;margin:0}
+.facts dt{font-weight:700;color:var(--muted);font-size:.9rem}
+.facts dd{margin:0 0 1rem}
+.facts dd:last-child{margin:0}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:2rem}}
+
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;padding:0;list-style:none;margin:0 0 1.6rem}
+.chips button{font:500 1rem var(--body);padding:.5rem 1.1rem;border:2px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);cursor:pointer}
+.chips button:hover,.chips button[aria-pressed="true"]{background:var(--pop);color:var(--pop-ink)}
+#skillNote{min-height:3.4em;color:var(--muted);max-width:62ch}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.card{background:var(--surface);border:2px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.card h3{font-size:1.9rem}
+.card .stack{font-weight:700;color:var(--hot);font-size:.95rem}
+.card details summary{cursor:pointer;font-weight:700}
+.card details p{margin:.6rem 0 0}
+.card a{font-weight:700}
+
+/* beyond code */
+.beyond{background:var(--ink);color:var(--bg)}
+.beyond h2{color:var(--bg)}
+.beyond p{color:inherit}
+.beyond .btn{color:var(--ink);box-shadow:4px 4px 0 var(--pop);border-color:var(--bg)}
+.beyond .btn:hover{box-shadow:2px 2px 0 var(--pop)}
+
+/* contact */
+form{display:grid;gap:1rem;max-width:560px}
+label{font-weight:700;display:grid;gap:.35rem}
+input,textarea{font:inherit;padding:.75rem .9rem;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:0}
+textarea{min-height:130px;resize:vertical}
+#formMsg{min-height:1.5em;font-weight:700}
+footer{border-top:2px solid var(--line);padding:1.6rem 0;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.role b{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href="#top">AKSHAT SHARMA</a>
+    <div class="links" id="links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a>
+      <button class="icon-btn" id="theme" aria-label="Switch colour theme" title="Switch colour theme">◐</button>
+    </div>
+    <button class="icon-btn" id="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="tag">BTech CSE · Jaipur</span>
+      <h1><span>Akshat</span><span class="outline">Sharma</span></h1>
+      <p class="role">I build <b id="typed"></b></p>
+      <p>Computer science student at JCRCU University who writes code and shoots street-style content. I like clear communication and things that work on a phone.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About me</h2>
+        <p>I’m a BTech student in computer science engineering at JCRCU University, Jaipur. My coursework covers C programming, computer networking and core CS foundations, and I’m learning to turn that into projects people can actually use.</p>
+        <p>Public speaking and communication are my other strengths. I enjoy explaining ideas simply, whether that’s in a team, on stage or in a Reel.</p>
+      </div>
+      <dl class="facts">
+        <dt>Studying</dt><dd>BTech, Computer Science Engineering</dd>
+        <dt>University</dt><dd>JCRCU University, Jaipur</dd>
+        <dt>Studying</dt><dd>C, networking, data foundations</dd>
+        <dt>Also into</dt><dd>Street style and cinematic portraits</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <ul class="chips" id="chips"></ul>
+      <p id="skillNote">Select a skill to see how I use it.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Project title one</h3>
+          <span class="stack">C · Python</span>
+          <p>Coursework project. Replace this with one sentence on what it does and who it helps.</p>
+          <details><summary>What I did</summary><p>Describe your role, the problem, and the result.</p></details>
+          <a href="#">View code</a>
+        </article>
+        <article class="card">
+          <h3>Project title two</h3>
+          <span class="stack">JavaScript · HTML · CSS</span>
+          <p>Personal project. Replace this with a short description and a link to the live site.</p>
+          <details><summary>What I did</summary><p>Describe your role, the problem, and the result.</p></details>
+          <a href="#">Open live demo</a>
+        </article>
+        <article class="card">
+          <h3>Project title three</h3>
+          <span class="stack">C++ · HTML · CSS</span>
+          <p>Hackathon entry. Replace this with the theme, your team size and how you placed.</p>
+          <details><summary>What I did</summary><p>Describe your role, the problem, and the result.</p></details>
+          <a href="#">View code</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="beyond" id="beyond">
+    <div class="wrap">
+      <h2>Beyond code</h2>
+      <p>Off screen I make urban fashion and lifestyle content: outfit-of-the-day posts, street-style looks, cinematic portraits and Reels, shaped by Bollywood and hip-hop.</p>
+      <p><a class="btn" href="https://www.instagram.com/a.kshat2008" rel="noopener">Follow @a.kshat2008</a></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <form id="form" novalidate>
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Message<textarea name="message" required></textarea></label>
+        <button class="btn primary" type="submit">Send message</button>
+        <div id="formMsg" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Akshat Sharma</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  // theme
+  try{var t=localStorage.getItem('theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  // menu
+  var links=document.getElementById('links'),menu=document.getElementById('menu');
+  menu.addEventListener('click',function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o);});
+  links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');menu.setAttribute('aria-expanded','false');}});
+  // typed role
+  var words=['websites in HTML, CSS & JS.','programs in C and C++.','small tools in Python.','content people want to watch.'];
+  var el=document.getElementById('typed'),wi=0,ci=0,del=false;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=words[0];}
+  else(function tick(){
+    var w=words[wi];ci+=del?-1:1;el.textContent=w.slice(0,ci);
+    var d=del?35:70;
+    if(!del&&ci===w.length){del=true;d=1600;}
+    else if(del&&ci===0){del=false;wi=(wi+1)%words.length;d=300;}
+    setTimeout(tick,d);
+  })();
+  // skills
+  var skills={
+    'C':'My first language at university. It taught me memory, pointers and how programs really run.',
+    'C++':'Used for object-oriented work and for a hackathon entry.',
+    'Python':'My go-to for quick scripts and coursework projects.',
+    'JavaScript':'Makes pages interactive. This portfolio runs on it.',
+    'HTML':'The structure of every page I build, written to be accessible.',
+    'CSS':'Layout, responsive design and light/dark themes.',
+    'Public speaking':'Comfortable presenting ideas to a room.',
+    'Communication':'Explaining technical things in plain language.'
+  };
+  var chips=document.getElementById('chips'),note=document.getElementById('skillNote');
+  Object.keys(skills).forEach(function(k){
+    var li=document.createElement('li'),b=document.createElement('button');
+    b.type='button';b.textContent=k;b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){
+      chips.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');note.textContent=skills[k];
+    });
+    li.appendChild(b);chips.appendChild(li);
+  });
+  // form (front-end only)
+  var form=document.getElementById('form'),msg=document.getElementById('formMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){msg.textContent='Fill in your name, a valid email and a message.';return;}
+    msg.textContent='Message ready. Connect this form to an email service to deliver it.';form.reset();
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
